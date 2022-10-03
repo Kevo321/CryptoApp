@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.cryptoapp.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="@string/title_crypto"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_navigation_home_to_detailsFragment"
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.cryptoapp.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_rates"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment

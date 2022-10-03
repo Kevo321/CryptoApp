@@ -5,47 +5,102 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/material_dynamic_primary95"
     tools:context=".DetailsFragment">
 
-    <TextView
-        android:id="@+id/namedetails_textView"
-        android:layout_width="109dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="202dp"
-        android:layout_marginEnd="135dp"
-        android:text="TextView"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="295dp"
+        android:layout_height="182dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/DetailsnametextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/DetailsPricetextView"
+        android:layout_width="322dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="52dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/DetailsnametextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/DetailsnametextView"
+        app:layout_constraintTop_toBottomOf="@+id/DetailsnametextView" />
+
+    <TextView
+        android:id="@+id/DetailsnametextView"
+        android:layout_width="241dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="220dp"
+        android:text="TextView"
+        android:textAlignment="viewStart"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/id_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/ChangePercentagetextView3"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="164dp"
-        tools:layout_editor_absoluteY="246dp" />
+        app:layout_constraintEnd_toEndOf="@+id/DetailsPricetextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/DetailsPricetextView"
+        app:layout_constraintTop_toBottomOf="@+id/DetailsPricetextView" />
 
     <TextView
-        android:id="@+id/maxsupply_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/Link_textView"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="108dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="287dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ChangePercentagetextView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ChangePercentagetextView3" />
 
     <TextView
-        android:id="@+id/rank_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="329dp" />
+        android:id="@+id/textView7"
+        android:layout_width="139dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="20dp"
+        android:text="Find out more"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/Link_textView"
+        app:layout_constraintEnd_toEndOf="@+id/Link_textView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Link_textView" />
 
     <TextView
-        android:id="@+id/rank_textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="285dp"
-        tools:layout_editor_absoluteY="202dp" />
+        android:id="@+id/textView3"
+        android:layout_width="98dp"
+        android:layout_height="32dp"
+        android:text="Price"
+        android:textAlignment="viewStart"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/DetailsPricetextView"
+        app:layout_constraintEnd_toEndOf="@+id/DetailsPricetextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/DetailsPricetextView" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="127dp"
+        android:layout_height="23dp"
+        android:layout_marginBottom="4dp"
+        android:text="Past 24 hours"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ChangePercentagetextView3"
+        app:layout_constraintEnd_toEndOf="@+id/ChangePercentagetextView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ChangePercentagetextView3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

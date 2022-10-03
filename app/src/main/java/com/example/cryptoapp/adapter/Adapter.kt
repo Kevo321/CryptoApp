@@ -45,10 +45,18 @@ class Adapter constructor(private val onClickListener:OnClickListener):
         holder.itemBinding.iconTextView2.text = cryptoList.symbol
         holder.itemBinding.priceTextView.text = "$"+ cryptoList.priceUsd?.substring(0,4)
         holder.itemBinding.percentTextView.text = "24hr: "+cryptoList.changePercent24Hr?.substring(0,5)+ "%"
+
+
         /* holder.itemBinding.percentTextView.text = changeColour(
              (cryptoList.changePercent24Hr!!.substring(0,5))) + "%"
 
          */
+
+        // set colour
+        holder.itemBinding.priceTextView
+            ?.setTextColor(if(holder.itemBinding.percentTextView.text.contains("-"))
+                Color.parseColor("#FF0000")else
+                Color.parseColor("#32CD32"))
 
         Glide.with(holder.itemView.context)
             .load(R.drawable.cryptoiconblue)

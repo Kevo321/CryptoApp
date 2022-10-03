@@ -52,6 +52,10 @@ class HomeFragment : Fragment() {
 
         val bundle = Bundle()
         bundle.putString("ID",it.id)
+        bundle.putString("changeprice",it.changePercent24Hr)
+        bundle.putString("name",it.name)
+        bundle.putString("price",it.priceUsd)
+        bundle.putString("link",it.explorer)
         findNavController().navigate(R.id.action_navigation_home_to_detailsFragment,bundle)
 
         })
@@ -69,7 +73,7 @@ class HomeFragment : Fragment() {
         viewmodel.repository.observe(viewLifecycleOwner){
             when(it.status){
                 Resource.Status.SUCCESS ->{
-                    Log.i("Data", ""+ (it.data))
+                //    Log.i("Data", ""+ (it.data))
                     adapter.submitList(it.data)
                 }
                 Resource.Status.ERROR ->{

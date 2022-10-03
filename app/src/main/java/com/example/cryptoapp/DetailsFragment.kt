@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.cryptoapp.cryptoViewModel.CryptoDetailsVM
 import com.example.cryptoapp.cryptoViewModel.CryptoListVM
 import com.example.cryptoapp.data.entities.Data
@@ -57,41 +60,55 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        arguments?.getString("ID").let {
+        arguments?.getString("price").let {
 
-            viewmodel.cryptoDetailsCall("bitcoin")
-            Log.i("ID",""+arguments?.getString("ID"))
+            viewmodel.getCryptoDetails(it!!)
+            Log.i("ID",""+arguments?.getString("price"))
+
+            Log.i("price",it)
+           // binding.namedetailsTextView.text = it!!
+          //  binding.priceTextView1.text = it.
+
+            binding.DetailsPricetextView.text = "$"+it.substring(0,4)
+
+
+            }
+
+        arguments?.getString("name").let {
+            viewmodel.getCryptoDetails(it!!)
+            binding.DetailsnametextView.text = it
         }
 
-        startObserverGetDetails()
+            arguments?.getString("changeprice").let {
+                viewmodel.getCryptoDetails(it!!)
+                binding.ChangePercentagetextView3.text = it.substring(0,6)
+            }
 
 
-    }
+        arguments?.getString("link").let {
+            viewmodel.getCryptoDetails(it!!)
+            binding.LinkTextView.text = it
+        }
+
+        Glide.with(binding.root)
+            .load(R.drawable.cryptoiconblue)
+            .transform(CircleCrop())
+            .into(binding.imageView)
+
+             // startObserverGetDetails()
+
+        }
+
 
 
     fun startObserverGetDetails() {
-        viewmodel.crypto.observe(viewLifecycleOwner) {
-            when (it.status) {
-                Resource.Status.SUCCESS -> { //200
-
-                    Log.i("Data2", "" + (it.data?.name))
-                  //  bindDetailsData(it?.data!!)
 
 
-                }
-                Resource.Status.ERROR -> {
-                    Log.i("Error", it.message.toString())
-                }
-                Resource.Status.LOADING -> {
-
-                }
-            }
-        }
     }
 
+
     private fun bindDetailsData(data:Data){
-        binding.namedetailsTextView.text = data.name
-        binding.idTextView.text = data.id
+
 
 
 
@@ -99,3 +116,7 @@ class DetailsFragment : Fragment() {
     }
 
 }
+
+
+
+

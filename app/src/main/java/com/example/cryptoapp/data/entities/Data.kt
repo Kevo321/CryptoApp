@@ -21,6 +21,6 @@ data class Data(
     val symbol: String?,
  //   val volumeUsd24Hr: String?,
     val changePercent24Hr: String?,
- //   val explorer: String?,
+    val explorer: String?,
   //  val vwap24Hr: String?
 )

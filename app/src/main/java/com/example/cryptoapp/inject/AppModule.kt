@@ -31,7 +31,7 @@ object AppModule {
     @Provides
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient) : Retrofit = Retrofit.Builder()
         .baseUrl("https://api.coincap.io/v2/")
-        .client(okHttpClient)
+       // .client(okHttpClient)
         .addConverterFactory((GsonConverterFactory.create(gson)))
         .build()
 

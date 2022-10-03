@@ -5,21 +5,21 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [com.example.cryptoapp.data.entities.Data::class], version = 11, exportSchema = false)
-abstract class AppDatabase : RoomDatabase() {
+@Database(entities = [com.example.cryptoapp.data.entities.rates.RateData::class], version = 2, exportSchema = false)
+abstract class RatesAppDatabase : RoomDatabase() {
 
-    abstract fun cryptoDAO():CryptoDAO
+    abstract fun ratesDAO():RatesDAO
 
     companion object{
-        @Volatile private var INSTANCE: AppDatabase?= null
+        @Volatile private var INSTANCE: RatesAppDatabase?= null
 
-        fun getDatabase(context: Context) : AppDatabase =
+        fun getDatabase(context: Context) : RatesAppDatabase =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: buildDatabase(context).also{ INSTANCE = it}
             }
 
         private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(context, AppDatabase::class.java, "CryptoDB9")
+            Room.databaseBuilder(context, RatesAppDatabase::class.java, "RatesDB1")
                 .fallbackToDestructiveMigration()
                 .build()
     }

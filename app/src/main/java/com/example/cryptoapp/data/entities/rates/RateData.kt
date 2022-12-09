@@ -10,5 +10,5 @@ data class RateData(
     val id: String,
     val rateUsd: String?,
     val symbol: String?,
-   val type: String?
+    val type: String?
 )

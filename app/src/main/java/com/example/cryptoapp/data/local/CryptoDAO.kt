@@ -21,8 +21,8 @@ interface CryptoDAO {
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertDetails(crypto:Data)
+    suspend fun insertDetails(crypto: Data)
 
     @Query("SELECT * FROM Crypto_Details WHERE id = :id")
-    fun getCryptoCurrency(id:String): LiveData<Data>
+    fun getCryptoCurrency(id: String): LiveData<Data>
 }

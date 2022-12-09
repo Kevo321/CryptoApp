@@ -33,15 +33,11 @@ class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -60,10 +56,11 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        arguments?.getString("price").let {
+        arguments?.getString("id").let {
 
-            viewmodel.getCryptoDetails(it!!)
-            Log.i("ID",""+arguments?.getString("price"))
+            viewmodel.cryptoDetailsCall(it!!)
+
+       /**     Log.i("ID",""+arguments?.getString("price"))
 
             Log.i("price",it)
            // binding.namedetailsTextView.text = it!!
@@ -71,9 +68,11 @@ class DetailsFragment : Fragment() {
 
             binding.DetailsPricetextView.text = "$"+it.substring(0,4)
 
-
+       **/
             }
 
+      startObserverGetDetails()
+/**
         arguments?.getString("name").let {
             viewmodel.getCryptoDetails(it!!)
             binding.DetailsnametextView.text = it
@@ -97,20 +96,48 @@ class DetailsFragment : Fragment() {
 
              // startObserverGetDetails()
 
+        **/
         }
 
 
 
     fun startObserverGetDetails() {
 
+        viewmodel.crypto.observe(viewLifecycleOwner){
+
+           when (it.status) {
+                Resource.Status.SUCCESS -> { //200
+                    // pass the data to recyclerview
+                    Log.i("Dataa", "" + (it.data))
+                    bindDetailsData(it.data!!)
+
+                    // create a recyclerview adapter
+                }
+                Resource.Status.ERROR -> {
+                    Log.i("Error", it.message.toString())
+                }
+                Resource.Status.LOADING -> {
+                    // Progress Dialog
+                }
+            }
+
+
+        }
 
     }
 
 
     private fun bindDetailsData(data:Data){
+        binding.LinkTextView.text = data.explorer
+        binding.ChangePercentagetextView3.text = data.changePercent24Hr?.substring(0,6)
+        binding.DetailsnametextView.text = data.name
+        binding.DetailsPricetextView.text = "$"+data.priceUsd?.substring(0,4)
 
 
-
+            Glide.with(binding.root)
+            .load(R.drawable.cryptoiconblue)
+            .transform(CircleCrop())
+            .into(binding.imageView)
 
 
     }

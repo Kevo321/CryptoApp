@@ -57,8 +57,9 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRepository(remoteDataSource: RemoteDataSource, localDataSource: CryptoDAO)
-            = CryptoRepo(remoteDataSource, localDataSource)
+    fun provideRepository(remoteDataSource: RemoteDataSource, localDataSource: CryptoDAO, cryptoService: CryptoService)
+            = CryptoRepo(remoteDataSource, localDataSource, cryptoService
+    )
 
     @Provides
     fun getOkhttp(): OkHttpClient{

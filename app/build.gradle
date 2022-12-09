@@ -4,8 +4,13 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'jacoco'
-    id 'com.google.gms.google-services'
+   // id 'com.google.gms.google-services'
 }
+//apply from: "$project.rootDir/jacoco.gradle"
+apply from: "./ktlint.gradle"
+
+
+
 apply from: "$project.rootDir/jacoco.gradle"
 
 android {
@@ -51,6 +56,9 @@ dependencies {
 
     def lifecycle_version = "2.6.0-alpha01"
     def arch_version = "2.1.0"
+
+    //datastore preferences used to store data on the notification fragment
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha04"
 
     // google services for firebase
     implementation platform('com.google.firebase:firebase-bom:30.4.1')
@@ -176,4 +184,8 @@ dependencies {
     debugImplementation 'androidx.fragment:fragment-testing:1.5.2'
     androidTestImplementation 'androidx.navigation:navigation-testing:2.5.2'
     implementation 'androidx.test.espresso:espresso-idling-resource:3.4.0'
+    // debugImplementation because LeakCanary should only run in debug builds.
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
+
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.9.0'
 }

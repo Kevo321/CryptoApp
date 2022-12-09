@@ -37,7 +37,9 @@ class HomeFragmentTest {
             .check(matches(isDisplayed()))
     }
 
-  /**  @Test
+
+
+   @Test
     fun recyclerViewItemClick_ShouldShow(){
 
         onView(withId(R.id.CryptoRV))
@@ -45,5 +47,5 @@ class HomeFragmentTest {
             .perform(RecyclerViewActions.actionOnItemAtPosition<Adapter.MyViewHolder>(0,click()))
             assert(navController.currentDestination?.id == R.id.detailsFragment)
     }
-  */
+
 }

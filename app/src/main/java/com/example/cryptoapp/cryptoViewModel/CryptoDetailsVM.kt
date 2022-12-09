@@ -3,14 +3,13 @@ package com.example.cryptoapp.cryptoViewModel
 import androidx.lifecycle.*
 import com.example.cryptoapp.data.entities.Data
 import com.example.cryptoapp.data.repository.CryptoRepo
-import com.example.cryptoapp.data.repository.DetailsRepository
 import com.example.cryptoapp.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CryptoDetailsVM @Inject constructor(private val repo: DetailsRepository): ViewModel() {
+class CryptoDetailsVM @Inject constructor(private val repo: CryptoRepo): ViewModel() {
 
     /**
      * first pass the id from backend
@@ -19,11 +18,11 @@ class CryptoDetailsVM @Inject constructor(private val repo: DetailsRepository): 
 
     val cryptoLiveData = MutableLiveData<Data>()
     val errorLiveData = MutableLiveData<String>()
-
+/**
     fun getCryptoDetails(id:String){
         viewModelScope.launch {
-            var response = repo.getCryptoDetails(id)
-                if(response.isSuccessful){
+            var response = repo.getCryptoCurrencyDetails(id)
+                if(response){
                     cryptoLiveData.postValue(response.body())
                 } else{
                     errorLiveData.postValue(response.errorBody().toString())
@@ -32,6 +31,7 @@ class CryptoDetailsVM @Inject constructor(private val repo: DetailsRepository): 
         }
 
     }
+    */
 
 
 
@@ -39,7 +39,8 @@ class CryptoDetailsVM @Inject constructor(private val repo: DetailsRepository): 
 
 
 
-/*
+
+
     private val _id = MutableLiveData<String>()
     private val _crypto = _id.switchMap { id ->repo.getCryptoCurrencyDetails(id) }
 
@@ -51,5 +52,5 @@ class CryptoDetailsVM @Inject constructor(private val repo: DetailsRepository): 
         _id.value = id
     }
 
- */
+
 }
